@@ -1,0 +1,191 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+    background-color: #000000;
+    color: azure;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    padding: 10px 20px;
+    background-color: #000000;
+}
+
+a {
+    text-decoration: none;
+    color: azure;
+    text-transform: capitalize;
+    transition: color 0.5s;
+}
+
+a:hover {
+    color: bisque;
+}
+.logo> a:hover{
+color: azure;    
+}
+
+.container {
+    width: 100%;
+    min-height: 89.1vh;
+    background-image: url(../Images/Admin2.JPG);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #374a67;
+}
+
+.prof {
+    background: transparent;
+    backdrop-filter: blur(40px) brightness(80%);
+    border-radius: 50px;
+    max-width: 90%;
+    padding: 31px;
+    text-align: center;
+    position: absolute;
+    top: 83px;
+    left: 150px;
+    width: 265px;
+    background-color: #F4ECD6;
+}
+
+.picture-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.txt {
+    text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+    .prof {
+        position: static;
+        margin-top: 20px; 
+    }
+}
+
+
+
+/* Add these styles to your existing CSS */
+
+.main-section {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: 70px; 
+    left: 580px;
+}
+
+.card {
+    flex: 0 0 calc(50% - 40px); /* Adjust width as needed */
+    background-color: #ffffff;
+    border-radius: 20px; /* Adjust border-radius for a softer look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.1); /* Add multiple shadow layers for a realistic effect */
+    padding: 30px;
+    margin: 20px;
+    width: 250px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+    font-size: 20px;
+    background-color: #F4ECD6;
+}
+
+
+.card h2 {
+    margin-bottom: 20px; /* Increase margin for larger heading */
+    font-size: 20px; /* Adjust font size as needed */
+}
+
+.count {
+    font-size: 30px; /* Increase font size for larger count */
+}
+
+.manage-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.manage-btn:hover {
+    background-color: #45a049;
+}
+
+.report-section {
+    margin-top: 50px; 
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    top: 330px;
+    right: 347px;
+    width: 540px;
+    background-color: #F4ECD6;
+
+} 
+
+ .report-section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+#report-text {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#report-text::placeholder {
+    color: #999;
+}
+
+#report-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#report-form button:hover {
+    background-color: #45a049;
+}
+
+
