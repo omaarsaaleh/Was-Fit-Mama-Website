@@ -120,6 +120,8 @@ section nav ul li a:hover {
 .sign-up-form h1 {
     color: #fff;
     margin-bottom: 30px;
+    user-select: none;
+
 }
 .input-box {
     border: none;
