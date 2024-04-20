@@ -15,7 +15,7 @@
     <!--Nav-->
     <section>
     <nav>
-        <img class="logo" src="logo.png" alt="">
+        <img class="logo" src="../logo.png" alt="">
         <ul>
             <li><a href="#">Sign up</a></li>
             <li><a href="#about">About</a></li>
@@ -30,19 +30,29 @@
             <h1>Sign Up</h1>
             <form>
                 <input type="text" class="input-box" placeholder="Username">
-                <input type="email" class="input-box" placeholder="Email">
-                <input type="password" class="input-box" placeholder="Password" id="p">
-                <p id="c" style="color: red;"></p>
-
-                <input type="password" class="input-box" placeholder="Confirm-password" id="cp">
-                <p id = 'cc'></p>
-                <p>I agree to the terms of services. <input type="checkbox"></p>
+                <input type="email" class="input-box" placeholder="Email" id="email">
+                <p id="emailMessage"></p>
                 
+                <div class="input-container">
+                    <input type="password" class="input-box" placeholder="Password" id="passwordField">
+                    <span class="material-symbols-outlined" id="visibility-toggle">visibility_off</span>
+                </div>      
                 
+                <p id="passwordMessage" style="color: red;"></p>
 
-                <button  onclick="checkPassword()" type="button" class="signup-btn"> Sign Up</button>
+                <input type="password" class="input-box" placeholder="Confirm-password" id="confirmpField">
+                <p id = 'confirmpMessage'></p>
+                
+                <div class="checkbox">
+                    <input type="checkbox">
+                    <p id="terms">I accept the Terms of the Use & Privacy Policy.</p>
+                </div>
+
+                <div class="input button">
+                    <input type="Submit" value="Sign Up" id="submitButton">
+                </div>                        
+                
                 <hr>
-                <p class="or">OR</p>
                 <p>Already has an account? <a href="Signin.html"><b>Sign in!</b></a></p>
             </form>
         </div>
