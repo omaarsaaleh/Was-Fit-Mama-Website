@@ -144,6 +144,8 @@ section nav ul li a:hover {
 
 .sign-in-form h1 {
     color: #fff;
+    user-select: none;
+
 }
 
 button {
