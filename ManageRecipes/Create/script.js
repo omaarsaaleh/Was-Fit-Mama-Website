@@ -1,23 +1,54 @@
 document.getElementById('recipeForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
     var recipeName = document.getElementById('recipeName').value;
-    var recipes = JSON.parse(localStorage.getItem('recipes')) || [];
     var cuisine = document.getElementById('cuisine').value;
     var occasion = document.getElementById('occasion').value;
-    var recipeMessage = document.getElementById('recipeMessage');
+    var ingredientsInput = document.getElementById('ingredients').value;
+    var stepsInput = document.getElementById('steps').value;
+    var totalTime = parseInt(document.getElementById('totalTime').value);
+    var preparationTime = parseInt(document.getElementById('preparationTime').value);
+    var protein = parseInt(document.getElementById('protein').value);
+    var fats = parseInt(document.getElementById('fats').value);
+    var carbs = parseInt(document.getElementById('carbs').value);
+    var recipeImage = document.getElementById('recipeImage').files[0];
 
-    if (recipes.find(recipe => recipe.name === recipeName)) {
-        recipeMessage.style.display = 'block'; // Show the error message
-        event.preventDefault();
-        return;
-    } else {
-        recipeMessage.innerText = ""; // Clear the error message
-        recipeMessage.style.display = 'none'; // Hide the error message
+    var cookingTime = Math.abs(totalTime - preparationTime);
+
+    var ingredients = ingredientsInput.split(',');
+
+    var steps = stepsInput.split('Then');
+
+    var calories = (protein * 4) + (carbs * 4) + (fats * 9);
+
+    var recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+    if (recipes.some(recipe => recipe.name === recipeName)) {
+        document.getElementById('recipeMessage').innerText = "Recipe with the same name already exists.";
+        return; 
     }
+
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        localStorage.setItem('recipeImage', event.target.result);
+    };
+    reader.readAsDataURL(recipeImage);
 
     recipes.push({
         name: recipeName,
         cuisine: cuisine,
-        occasion: occasion
+        occasion: occasion,
+        ingredients: ingredients,
+        steps: steps,
+        totalTime: totalTime,
+        preparationTime: preparationTime,
+        protein: protein,
+        fats: fats,
+        carbs: carbs,
+        cookingTime: cookingTime,
+        calories: calories
     });
+
     localStorage.setItem('recipes', JSON.stringify(recipes));
+
+    document.getElementById('recipeMessage').innerText = "Recipe added successfully.";
 });

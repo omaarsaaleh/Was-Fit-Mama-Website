@@ -188,12 +188,8 @@ nav ul li a:hover {
 
 
 .input{
+    position: relative;
     padding:20px 0 0 30px ;
-}
-
-.input p{
-    padding-left: 0;
-    padding-top: 9px;
 }
 
 form p{
@@ -207,7 +203,7 @@ form p{
     border-radius: 6px;  
     width: 90%;
     height: 35px;
-    padding: 12px 20px;
+    padding: 5px 20px;
 }
 
 .input input:focus{

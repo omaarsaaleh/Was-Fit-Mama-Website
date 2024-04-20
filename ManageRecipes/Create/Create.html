@@ -11,7 +11,7 @@
     <div class="container">
         <nav>
             <div class="logo">
-                <a href="../../Home_page/Home Page.html"><img src="../Images/logo.png" alt=""> </a> 
+                <a href=""><img src="../Images/logo.png" alt=""> </a> 
             </div>
             
             <img class="profile" src="../Images/default-avatar.png" alt="User Profile">
@@ -20,7 +20,7 @@
             <hr>
             <ul>
                 <li>
-                    <a href="../../Home_page/Home Page.html">
+                    <a href="#">
                         <span class="material-symbols-outlined">home</span>
                         Home
                     </a>
@@ -32,9 +32,9 @@
                         Dashboard
                     </a>
                 </li>
-                <li><a href="../../ManageUsers/Create/Create.html">
-                    <span class="material-symbols-outlined">group</span>
-                        Manage Users
+                <li><a href="#">
+                    <span class="material-symbols-outlined">soup_kitchen</span>
+                    Manage Users
                 </a></li>
 
             </ul>
@@ -54,13 +54,48 @@
                     <div class="input">
                         <input type="text" placeholder="Enter Cuisine" required id="cuisine">
                     </div>
+                    
                     <div class="input">
                         <input type="text" placeholder="Enter Occasion (Optional)" id="occasion">
                         <span class="error" id="occasionError" style="color: red;"></span>
                     </div>
-                    <div class="input button">
-                        <input type="Submit" value="Add Recipe" id="submitButton">
+                    <div class="input">
+                        <input type="file" id="recipeImage" accept="image/png, image/jpeg" required>
                     </div>
+                    
+                    <div class="input">
+                        <input type="text" placeholder="Enter all ingredients separated by a comma" id="ingredients" required>
+                    </div>
+
+                    <div class="input">
+                        <input type="text" placeholder="Write every step separated by word Then." id="steps" required>
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter total time" id="totalTime" required>
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter preparation time" id="preparationTime" required>
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter protein by grams" id="protein" required>
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter fats by grams" id="fats" required>
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter carbs by grams" id="carbs" required>
+                    </div>
+
+                    <div class="input button">
+                        <input type="Submit" value="Add Recipe" id="submitButton" >
+                    </div>
+                    
+                
                     <hr>
                     <div class="text"><span>Or</span></div>
                     <div class="links">
