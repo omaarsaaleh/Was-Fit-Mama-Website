@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="recipe_page.css">
+    <script src="https://kit.fontawesome.com/3929e16ef5.js" crossorigin="anonymous"></script>
+    <script src="{% static 'network/functions.js' %}"></script>
+    <title>Recipe</title>
+    
+</head>
+<body>
+    <section>
+        <nav>
+            <img class="logo" id="logo" src="../../Images/logo.png" alt="">
+            <ul>
+                <li><a href="../../Authentication/Signin/Signin.html" id="link2"></a></li>
+                <li><a href="../../Authentication/Signup/Signup.html" id="link3"></a></li>
+                <li><a href="../../Dashboard/Dashboard.html" id="link"></a></li>
+                <li><a href="../../Home_page/Home Page.html">Home</a></li>
+                <li><a href="../../About/About.html">About</a></li>
+                <li><a href="../../Recipe_page/Recipes/recipes.html">Recipes</a></li>
+                <li><a href="../../Occasions-Cuisines/cuisines.html">Cuisines</a></li>
+                <li><a href="../../Occasions-Cuisines/occasions.html">Occasions</a></li>
+            </ul> 
+        </nav>
+    </section>
+
+    <div class="grid"> 
+        <div>
+            <h1 class="recipe-name2">Recipe Name</h1>
+        </div>
+
+        <div class="image-recipe">
+            <img id="recipe1_image2" src="" alt="">
+        </div>
+
+        <div class="recipe-time">
+            <h2>Preparation Time</h2>
+            <span>Total: <p class="Total2"> min</p></span>
+            <span>Preparation: <p class="Preparation2"> min</p></span>
+            <span>Cooking: <p class="Cooking2"> min</p></span>
+        </div>
+
+        <div class="recipe-ingrediants">
+            <h2>Ingrediants</h2>
+            <ul class="Ingrediants2">
+
+            </ul>
+        </div>
+
+        <div class="recipe-steps">
+            <h2>Steps</h2>
+            <ol class="Steps2">
+
+            </ol>
+        </div>
+        
+        <div class="recipe-nutrition">
+            <h2>Nutrition</h2>
+            <span>Fat:<p class="Fats2">...</p></span>
+            <span>Calories: <p class="Calories2">...</p></span>
+            <span>Protien: <p class="Protiens2">...</p></span>
+        </div>
+    </div>
+    <script>
+        var image2 = localStorage.getItem("image");
+        document.getElementById("recipe1_image").src = image2;
+    </script>
+
+
+    <div class="footer">
+        &copy; 2024<span >WasFit Mama </span> All Rights Reserved
+    </div>
+
+
+<script src="addtorecipe.js"></script>
+<script>
+
+    let flag =localStorage.getItem("logged");
+    if (flag == "true") { 
+        let l =document.getElementById("link");
+        l.innerText = "Admin Dashboard";
+    }
+    else {
+        let l =document.getElementById("link");
+        l.innerText = "";
+        let signi = document.getElementById("link2");
+        let signu = document.getElementById("link3");
+        signi.innerText = "Sign in";
+        signu.innerText = "Sign Up";
+    }
+    
+</script>
+
+</body>
+</html>

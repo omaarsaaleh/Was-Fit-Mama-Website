@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Recipe</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head> 
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="../../Home_page/Home Page.html"><img src="../../Images/logo.png" alt=""> </a> 
+            </div>
+            
+            <img class="profile" src="../../Images/default-avatar.png" alt="User Profile">
+            
+            <h4>USERNAME</h4>
+            <hr>
+            <ul>
+                <li>
+                    <a href="../../Home_page/Home Page.html">
+                        <span class="material-symbols-outlined">home</span>
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../../Dashboard/Dashboard.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="../../Recipe_page/Recipes/recipes.html">
+                        <span class="material-symbols-outlined">soup_kitchen</span>
+                        View Recipes
+                    </a>
+                </li>
+
+
+                <li><a href="../../ManageOccassions/Create/Create.html">
+                    <span class="material-symbols-outlined">diversity_3</span>
+                    Manage Occasions
+                </a></li>
+                <li><a href="../../ManageCuisines/Create/Create.html">
+                    <span class="material-symbols-outlined">food_bank</span>
+                    Manage Cuisines
+                </a></li>
+
+            </ul>
+        </nav>
+
+        
+        <div class="content">
+            <div class="container1">
+                <div class="header">
+                    <h2>Add a New Recipe</h2>
+                </div>
+                <form id="recipeForm" action="#">
+                    <div class="input">
+                        <input type="text" placeholder="Enter Recipe name" required id="recipeName">
+                    </div>
+                    <div class="input" style="padding-right:40px ;">
+                        <textarea placeholder="Enter Description" required id="description"></textarea>
+                    </div>
+                    
+                    <div class="input">
+                        <input type="text" placeholder="Enter Cuisine" required id="cuisine">
+                    </div>
+                    
+                    <div class="input">
+                        <input type="text" placeholder="Enter Occasion (Optional)" id="occasion">
+                        <span class="error" id="occasionError" style="color: red;"></span>
+                    </div>
+                    
+                    
+                    <div class="input">
+                        <div id="ingredients-container">
+                            <div class="ingredient">
+                              <label>Ingredient 1</label>
+                              <input type="text" name="step1" placeholder="Enter recipe ingredient">
+                            </div>
+                          </div>
+                          
+                        <div class="buttondiv"> 
+                            <button type="button" id="add-ingredient-button">Add ingredient</button>
+                        </div>    
+                    </div>
+
+                    <div class="input" style="padding-top: 0px;">
+                        <div id="steps-container" >
+                            <div class="step">
+                              <label>Step 1</label>
+                              <input type="text" name="step1" placeholder="Enter recipe step">
+                            </div>
+                          </div>
+                          
+                        <div class="buttondiv"> 
+                            <button type="button" id="add-step-button">Add Step</button>
+                        </div>    
+                    </div>
+
+                    <div class="input" style="padding-top: 10px;">
+                        <input type="number" placeholder="Enter cooking time" id="cookingTime" required min="1" >
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter preparation time" id="preparationTime" required min="1" >
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter protein by grams" id="protein" required min="0" >
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter fats by grams" id="fats" required min="0" >
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter carbs by grams" id="carbs" required min="0" >
+                    </div>
+
+                    <div class="input">
+                        <label for="recipeImage" class="file-input-label">
+                            Upload Recipe Image
+                            <input type="file" id="recipeImage" accept="image/png, image/jpeg" required>
+                        </label> 
+                        <span id="fileNameDisplay"></span>
+                   
+                    </div>
+
+
+                    <div class="input button">
+                        <input type="Submit" value="Add Recipe" id="submitButton" >
+                    </div>
+                    <p id="recipeMessage" style="text-align: center; padding-left: 0; margin-left:0 ; font-weight: bold;"></p>
+
+                
+                    <hr>
+                    <div class="text"><span>Or</span></div>
+                    <div class="links">
+                        <a href="../Update/Update.html" class="button-link">Update Recipe</a>
+                        <a href="../Delete/delete.html" class="button-link">Delete Recipe</a>
+                    </div>
+                </form>                  
+            </div>
+        </div>
+            </div>
+            <script src="main2.js"></script>
+            
+    </body>
+
+</html>
+        
