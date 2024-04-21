@@ -278,3 +278,19 @@ form p{
 
 
 
+.profile {
+    width: 100%; /* Adjust the width as needed */
+    text-align: center; /* Center the content horizontally */
+}
+
+.profile img {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    border-radius: 50%; /* Make it circular */
+    margin: 0 auto; /* Center the image horizontally */
+    display: block; /* Ensure the image behaves as a block element */
+}
+
+.profile h4 {
+    margin-top: 10px; /* Adjust the spacing between the image and the username */
+}
