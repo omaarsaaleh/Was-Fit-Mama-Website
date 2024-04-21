@@ -48,9 +48,13 @@
                     <input type="checkbox">
                     <p id="terms">I accept the Terms of the Use & Privacy Policy.</p>
                 </div>
+                <div class="checkbox">
+                    <input type="checkbox">
+                    <p id="terms">Admin Account.</p>
+                </div>
 
                 <div class="input button">
-                    <input type="Submit" value="Sign Up" id="submitButton">
+                    <input type="Submit" value="Sign Up" id="submitButton" onclick="signup()">
                 </div>                        
                 
                 <hr>
@@ -64,4 +68,37 @@
    
 </body>
 <script src="script.js"></script>
+
+<script>
+   
+
+let pp = '';
+
+pass_ele.addEventListener('input', function() {
+    pp = this.value;
+});
+
+
+const e_ele = document.getElementById("email");
+let ee = '';
+
+e_ele.addEventListener('input', function() {
+    ee = this.value;
+});
+
+class User  {
+    constructor(email, pass) {
+        this.email = email;
+        this.pass = pass;
+    }
+}
+
+function signup() {
+    let u1 = new User(ee,pp);
+    let serialized = JSON.stringify(u1);
+    localStorage.setItem("user", serialized);
+    alert("Signup Successfull!");
+}
+
+</script>
 </html>
