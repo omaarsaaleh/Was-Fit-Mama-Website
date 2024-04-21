@@ -36,7 +36,9 @@
                     <span class="material-symbols-outlined">soup_kitchen</span>
                     Manage Recipes
                 </a></li>
-
+                <li>
+                    <span class="custom"><input type="Submit" value="Log out" id="submitButton" onclick="logout()" style="font-size: larger;padding: 3px;margin-left: 80px; color: red; margin-top: 30px; font-weight: bold; padding: 10px; background-color: aliceblue; border-radius: 20%;"  ></span>
+                </li>
             </ul>
         </nav>
 
@@ -151,9 +153,16 @@
             </div>    
         </div>
 
+        
 
 </body>
-
+    <script>
+        function logout() {
+            localStorage.setItem("logged", false);
+            alert("Logged out!");
+            window.location = "../Home_page/Home Page.html";
+        }
+    </script>
 
 </html>
 
