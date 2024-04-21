@@ -11,6 +11,7 @@
         <nav>
             <img class="logo" src="../Images/logo.png" alt="">
             <ul>
+                <li><a href="../Dashboard/Dashboard.html" id="link"></a></li>
                 <li><a href="../Authentication/Signin/Signin.html">Sign in</a></li>
                 <li><a href="../Authentication/Signup/Signup.html">Sign up</a></li>
                 <li><a href="../About/About.html">About</a></li>
@@ -43,7 +44,15 @@
             window.location.href = destinationUrl;
         })
         
-
+        let flag =localStorage.getItem("logged");
+        if (flag == "true") {
+            let l =document.getElementById("link");
+            l.innerText = "Admin_Dashboard";
+        }
+        else {
+            let l =document.getElementById("link");
+            l.innerText = "";
+        }
 
     </script>
 
