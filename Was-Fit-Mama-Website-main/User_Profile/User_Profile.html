@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="User_Profile.css">
+    <title>User Profile</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="../Home_page/Home Page.html"><img src="logo.png" alt=""> </a> 
+            </div>
+    
+            <ul>
+                <li>
+                    <a href="../Home_page/Home Page.html">
+                        <span class="material-symbols-outlined">home</span>
+                        Home
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="User_Profile.html">
+                        <span class="material-symbols-outlined">account_circle</span>
+                        Profile Account
+                    </a>
+                </li>
+
+                <li><a href="../ManageRecipes/Create/Create.html">
+                    <span class="material-symbols-outlined">soup_kitchen</span>
+                    Manage Recipes
+                </a></li>
+                
+                <li><a href="../ManageOccassions/Create/Create.html">
+                    <span class="material-symbols-outlined">diversity_3</span>
+                    Manage Occasions
+                </a></li>
+                <li><a href="../ManageCuisines/Create/Create.html">
+                    <span class="material-symbols-outlined">food_bank</span>
+                    Manage Cuisines
+                </a></li>
+
+                <li>
+                    <button type="submit" value="Log out" id="submitButton" onclick="logout()">log out</button>
+                </li>
+
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="grid">
+                <div class="height">
+                    <img class="profile" src="default-avatar.png" alt="User Profile" id="avatar">  
+                    <label for="my-avatar" class="file-input-label">
+                        <input type="file" id="my-avatar" accept="image/png, image/jpeg" >
+                        <span class="material-symbols-outlined">edit</span>
+                    </label> 
+                </div>
+                <div class="username">
+                    <h6>Your Name</h6>
+                    <input type="text" id="username" placeholder="USERNAME">
+                    <label for="my-name" class="file-input-label">
+                        <input type="text" id="my-name">
+                        <span class="material-symbols-outlined">edit</span>
+                    </label> 
+                </div>
+                <div class="email">
+                    <h6>Your Email</h6>
+                    <input type="email" id="email" class="email" placeholder="EMAIL">
+                    <label for="my-email" class="file-input-label">
+                        <input type="email" id="my-email">
+                        <span class="material-symbols-outlined">edit</span>
+                    </label> 
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script src="User_Profile.js"></script>
+</body>
+</html>
