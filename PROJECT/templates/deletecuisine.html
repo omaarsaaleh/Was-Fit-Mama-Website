@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete a Cuisine</title>
+    <link rel="stylesheet" href="{% static 'deletecuisine/css/style.css' %}">
+</head> 
+<body>
+    <div class="background" id="background"></div>
+    
+
+    <div class="modal" id="modal">
+        <span class="material-symbols-outlined">error</span>
+        <h2>Confirm</h2>
+        <p id="confirmationMessage" ></p>
+        <div class="buttons">
+            <button id="confirmButton">Confirm</button>
+            <button id="cancelButton">Cancel</button>
+        </div>
+    </div>
+
+    
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""> </a> 
+            </div>
+            
+            {% if user_profile_pic %}
+                <img class="profile" src="{{ user_profile_pic }}" alt="User Profile" id="ProfilePic">
+            {% else %}
+                <img class="profile" src="{% static 'images/defaultAvatar.png' %}" alt="User Profile" id="ProfilePic">
+            {% endif %} 
+            
+            <h4 id="name">{{name}}</h4>
+            <hr>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}">
+                        <span class="material-symbols-outlined">home</span>
+                        Home
+                    </a>
+                </li>
+                
+                <li><a href="{% url 'myprofile:myprofile' %}">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    My Profile
+                </a></li>
+
+                <li>
+                    <a href="{% url 'dashboard' %}">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+ 
+                <li><a href="{% url 'cuisines' %}">
+                    <span class="material-symbols-outlined">food_bank</span>
+                    View Cuisines
+                </a></li> 
+
+
+                <li ><a href="{% url 'addrecipe:addrecipe' %}">
+                    <span class="material-symbols-outlined">soup_kitchen</span>
+                    Manage Recipes
+                </a></li>
+                <li>
+                    <a href="{% url 'addoccasion'%}">
+                        <span class="material-symbols-outlined">diversity_3</span> 
+                        Manage Occasions
+                    </a>
+                </li>
+                
+
+                <li>
+                    <button type="submit" value="Log out" id="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">log out</button>
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                </li>
+            
+
+
+            </ul>
+        </nav>
+
+        <div class="content">
+            <div class="container1">
+                <div class="header">
+                    <h2>Delete a Cuisine</h2>
+                </div>
+                <form id="deleteCuisineForm" action="#">
+                    <div class="input">
+                        <input type="text" placeholder="Cuisine Name" required id="cuisineName">
+                    </div>
+                    <p id="statusMessage" style="padding-left: 0; margin-left: 0; text-align: center; font-weight: bold;"></p>
+                    <div class="input button">
+                        <input type="Submit" value="Delete Cuisine" id="deleteButton">
+                    </div>
+                    <hr>
+                    <div class="text"><span>Or</span></div>
+                    <div class="links">
+                        <a href="{% url 'addcuisine:addcuisine' %}" class="button-link">Create Cuisine</a>
+                        <a href="{% url 'updatecuisine' %}" class="button-link">Update Cuisine</a>
+                    </div>
+                </form>                  
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'deletecuisine/js/script.js '%}"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Password</title>
+    <link rel="stylesheet" href="{% static 'updatepass/css/style.css' %}">
+    
+</head> 
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""> </a> 
+            </div>
+            
+            {% if user_profile_pic %}
+                <img class="profile" src="{{ user_profile_pic }}" alt="User Profile" id="ProfilePic">
+            {% else %}
+                <img class="profile" src="{% static 'images/defaultAvatar.png' %}" alt="User Profile" id="ProfilePic">
+            {% endif %} 
+
+            <h4 id="name">{{name}}</h4>
+            <hr>
+            <ul>
+                
+                    <li> 
+                        <a href="{% url 'home' %}">
+                            <span class="material-symbols-outlined">home</span>
+                            Home
+                        </a>
+                    </li>
+                    <li><a href="{% url 'myprofile:myprofile' %}">
+                        <span class="material-symbols-outlined">account_circle</span>
+                        My Profile
+                    </a></li>
+                    {% if user.is_superuser %}
+    
+                    <li  >
+                        <a href="{% url 'dashboard' %}">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            Dashboard
+                        </a>
+                    </li>
+    
+                    <li  ><a href="{% url 'addcuisine:addcuisine' %}">
+                        <span class="material-symbols-outlined">food_bank</span>
+                        Manage Cuisines
+                    </a></li>
+    
+    
+                    <li ><a href="{% url 'addrecipe:addrecipe' %}">
+                        <span class="material-symbols-outlined">soup_kitchen</span>
+                        Manage Recipes
+                    </a></li>
+                    <li  >
+                        <a href="{% url 'addoccasion'%}">
+                            <span class="material-symbols-outlined">diversity_3</span>
+                            Manage Occasions
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    <li>
+                        <button type="submit" value="Log out" id="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">log out</button>
+                        <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                            {% csrf_token %}
+                        </form>
+                    </li>
+
+            </ul>
+        </nav>
+
+        
+        <div class="content">
+            <div class="container1">
+                <div class="header">
+                    <h2>Update Password</h2>
+                </div>
+                <form id="ProfileForm" action="#">
+                    
+ 
+                    <div class="input">
+                        <p>Enter Your Old Password</p>
+                        <input type="password" placeholder="Old Password" required id="OldPass" >
+                        <span class="material-symbols-outlined" id="visibility-toggle1">visibility_off</span> 
+
+                    </div>
+                    
+                    <div class="input">
+                        <p>Enter Your New Password</p>
+                        <input type="password" placeholder="New Password" required id="NewPass" >
+                        <span class="material-symbols-outlined" id="visibility-toggle2">visibility_off</span> 
+                        <p id="passwordMessage"></p>
+                    </div>
+                    
+                    <div class="input">
+                        <p>Confirm Your New Password</p>
+                        <input type="password" placeholder="Confirm New Password" required id="ConfirmNewPass" >
+                        <p id="ConfirmPasswordMessage"></p>
+
+                    </div>
+
+                    <p id="statusMSG"></p>
+
+                    <div class="input button">
+                        <input type="Submit" value="Update" id="SumbitButton">
+                    </div>
+     
+                </form>                  
+            </div>
+        </div>
+            </div>
+            <script src="{% static 'updatepass/js/script.js' %}"></script>
+            
+    </body>
+
+</html>
+        

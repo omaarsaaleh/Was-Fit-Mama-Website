@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+    
+</head> 
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""> </a> 
+            </div>
+            
+            {% if user_profile_pic %}
+                <img class="profile" src="{{ user_profile_pic }}" alt="User Profile" id="ProfilePic">
+            {% else %}
+                <img class="profile" src="{% static 'images/defaultAvatar.png' %}" alt="User Profile" id="ProfilePic">
+            {% endif %} 
+            
+            <h4 id="name">{{name}}</h4>
+            <hr>
+            <ul>
+                <li> 
+                    <a href="{% url 'home' %}">
+                        <span class="material-symbols-outlined">home</span>
+                        Home
+                    </a>
+                </li>
+
+                <li><a href="{% url 'myprofile:myprofile' %}">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    My Profile
+                </a></li>
+
+
+                <li  ><a href="{% url 'addcuisine:addcuisine' %}">
+                    <span class="material-symbols-outlined">food_bank</span>
+                    Manage Cuisines
+                </a></li>
+
+
+                <li >{% if user.is_authenticated %}
+                    <a href="{% url 'recipes:recipes' user.name %}">
+                    {% else %}
+                    <a href="{% url 'recipes:recipes' user_name='none' %}">
+                    {% endif %}
+                    <span class="material-symbols-outlined">soup_kitchen</span>
+                    Manage Recipes
+                </a></li>
+                <li  >
+                    <a href="{% url 'addoccasion'%}">
+                        <span class="material-symbols-outlined">diversity_3</span>
+                        Manage Occasions
+                    </a>
+                </li>
+                
+                <li>
+                    <button type="submit" value="Log out" id="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">log out</button>
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                </li>
+
+            </ul>
+        </nav>
+
+
+        <div class="content">
+            <div class="stats">
+                
+                <div class="stat">
+                    <h2>Recipes</h2>
+                    <span class="material-symbols-outlined">lunch_dining</span>
+                    <h2 id="numOfRecipes">{{ num_recipes }}</h2>
+                </div>
+
+                <div class="stat">
+                    <h2>Cuisines</h2>
+                    <span class="material-symbols-outlined">food_bank</span>
+                    <h2 id="numOfCuisines">{{num_cuisines}}</h2>
+                </div>
+
+
+                <div class="stat">
+                    <h2>Users</h2>
+                    <span class="material-symbols-outlined">group</span>
+                    <h2 id="numOfUsers">{{ num_users }}</h2>
+                </div>
+                
+                <div class="stat">
+                    <h2>Occasion</h2>
+                    <span class="material-symbols-outlined">diversity_3</span>
+                    <h2 id="numOfOccasions">{{num_occasions}}</h2>
+                </div>
+            </div>    
+                
+                
+                
+            </div>    
+        </div>
+
+
+
+
+</body>
+
+
+</html>
+
+
+
+
+

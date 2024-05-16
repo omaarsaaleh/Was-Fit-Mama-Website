@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Occassion</title>
+    <link rel="stylesheet" href="{% static 'addoccasion/css/style.css' %}">
+    
+</head> 
+<body>
+    <div class="container">
+        <nav> 
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""> </a> 
+            </div>
+            
+            {% if user_profile_pic %}
+                <img class="profile" src="{{ user_profile_pic }}" alt="User Profile" id="ProfilePic">
+            {% else %}
+                <img class="profile" src="{% static 'images/defaultAvatar.png' %}" alt="User Profile" id="ProfilePic">
+            {% endif %} 
+            
+            <h4 id="name">{{name}}</h4>
+            <hr>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}">
+                        <span class="material-symbols-outlined">home</span>
+                        Home
+                    </a>
+                </li>
+
+                <li><a href="{% url 'myprofile:myprofile' %}">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    My Profile
+                </a></li>
+  
+                <li>
+                    <a href="{% url 'dashboard' %}">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li><a href="{% url 'occasions' %}">
+                    <span class="material-symbols-outlined">diversity_3</span>
+                    View Occasions
+                </a></li>
+                
+                <li>
+                    <a href="{% url 'addrecipe:addrecipe' %}">
+                        <span class="material-symbols-outlined">soup_kitchen</span>
+                        Manage Recipes
+                    </a>
+                </li>
+ 
+                <li>
+                    <a href="{% url 'addcuisine:addcuisine' %}">
+                        <span class="material-symbols-outlined">food_bank</span>
+                        Manage Cuisines
+                    </a>
+                </li>
+                
+
+                <li>
+                    <button type="submit" value="Log out" id="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">log out</button>
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                </li>
+
+            </ul>
+        </nav>
+
+        
+        <div class="content">
+            <div class="container1">
+                <div class="header">
+                    <h2>Add a New Occassion</h2>
+                </div>
+                <form id="OccassionForm" action="#">
+                    <div class="input">
+                        <input type="text" placeholder="Enter Occassion name" required id="OccassionName">
+                    </div>
+                    <div class="input" style="padding-right:40px ;">
+                        <textarea placeholder="Enter Description" required id="description"></textarea>
+                    </div>
+                    
+
+                    <div class="input">
+                        <label for="OccassionImage" class="file-input-label">
+                            Upload Occassion Image
+                            <input type="file" id="OccassionImage" accept="image/png, image/jpeg" >
+                        </label> 
+                        <span id="fileNameDisplay"></span>
+                   
+                    </div>
+
+                    <div class="input button">
+                        <input type="Submit" value="Add Occassions" id="submitButton" >
+                    </div>
+                    <p id="statusMessage" style="text-align: center; padding-left: 0; margin-left:0 ; font-weight: bold;"></p>
+
+                
+                    <hr>
+                    <div class="text"><span>Or</span></div>
+                    <div class="links">
+                        <a href="{% url 'updateoccasion' %}" class="button-link">Update Occassion</a>
+                        <a href="{% url 'deleteoccasion' %}" class="button-link">Delete Occassion</a>
+                    </div>
+                </form>                  
+            </div>
+        </div> 
+            </div>
+
+            
+    </body>
+    <script src="{% static 'addoccasion/js/script.js' %}"></script>
+</html>
+        

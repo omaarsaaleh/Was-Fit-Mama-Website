@@ -1,0 +1,272 @@
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, Arial, Helvetica;
+    
+}
+ 
+
+
+body{
+    background-color: #fff;
+    
+}
+
+.container{
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+/* smaller takes all the page */
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) { 
+    .container {
+        width: 100%; 
+    }
+
+    
+}
+
+/*Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container{
+        width: 700px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .container{
+        width: 900px;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .container{
+        width: 1050px;
+    }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+    .container {
+        width: 1200px;
+    }
+}
+
+/* NAV */
+
+
+::selection{
+    background-color: black;
+    color: bisque ;
+}
+
+section {
+    width: 100%;
+    height: 11vh;
+}
+
+section nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    padding-top: 12px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 15px;
+    right: 0;
+    left: 0;
+    background: black;
+    box-shadow: 0 0 10px rgba(0, 0,0, 0.5);
+    z-index: 99;
+}
+span {
+    color: bisque;
+}
+
+section nav ul {
+    list-style: none;
+}
+
+section nav img {
+    width: 260px;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+section nav ul li {
+    display: inline-block;
+    margin: 0px 15px;
+}
+
+section nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    font-size: 17px;
+}
+section nav ul li a::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: bisque;
+    display: block;
+    transition: 0.2s linear;
+}
+
+section nav ul li a:hover:after {
+    width: 100%;
+}
+section nav ul li a:hover {
+    color: bisque;
+}
+
+
+
+/*HEADER*/
+
+
+header .container {
+    margin-top: 65px;
+    margin-bottom: 40px;
+    position: relative; 
+    height: 200px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+}
+  
+header .container::after {
+    content: ""; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius:7px;
+}
+
+
+
+/* .occasions-header{
+    background: url('../../Images/cover1.png') center/cover no-repeat;
+}
+
+.cuisines-header{
+    background: url('../../Images/cuisines.jpg') center/cover no-repeat;
+} */
+
+header  h1{
+    color: white; z-index: 1;
+}  
+
+
+/* Occasions */
+.occasions{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 64.3vh;
+
+}
+
+.occasions .content{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+    grid-gap:30px;
+    margin-top:20px;
+}
+
+.occasions .content img{
+    max-width: 100%;
+    border-radius: 2%;
+}
+
+
+.occasions .content .occasion a {
+    text-decoration:none;
+    color: black;
+}
+.occasion p{
+    font-size: small;
+    padding: 7px;
+}
+
+.occasion {
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    background-color: white;
+    border-radius: 2%;
+    box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+    display: grid;
+    /* border: 2px solid hsla(0, 0%, 100%, .14); */
+    
+}
+
+.occasion .countdown{
+    display: grid;
+    /* color: rgb(0, 0, 0); */
+    align-items: center;
+    padding-top: 10px ;
+    padding-bottom: 10px;
+    color: #000000;
+    border-radius: 2%;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.occasion:hover  {
+    transform: scale(1.1) ;
+    .countdown{
+        opacity: 1;
+        display: grid;
+    }
+}
+
+@media (max-width: 768px) { 
+    header .container {
+        border-radius: 0px;
+    }
+      
+    header .container::after {
+        border-radius:0px;
+    }
+    
+}
+
+@media (max-width:576px) {
+    .occasion .countdown{
+        opacity: 1;
+    }
+    .occasion:hover  {
+        transform: scale(1) ;
+    }
+}
+
+/* Footer */
+
+.footer{
+    margin-top: 40px;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    padding: 25px;
+    background-color: #000000;
+}
+
+
+

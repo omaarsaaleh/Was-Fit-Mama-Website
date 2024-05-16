@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="{% static 'signin/css/style.css' %}">
+</head>
+<body>
+
+<style> 
+    #outter {
+        background-image: url( "{% static 'images/signBackground.jpg' %}" );
+    }
+</style>
+
+    <section>
+        <nav>
+            <img class="logo" src="{% static 'images/logo.png' %}" alt="" onclick="window.location.href='/'">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'signup:getpage' %}">Sign up</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'recipes:recipes' user.name %}">Recipes</a></li>
+                {% else %}
+                <li><a href="{% url 'recipes:recipes' user_name='none' %}">Recipes</a></li>
+                {% endif %}
+                <li><a href="{% url 'cuisines' %}">Cuisines</a></li>
+                <li><a href="{% url 'occasions' %}">Occasions</a></li>
+            </ul> 
+        </nav>
+
+    <div id="outter"> 
+    <div class="sign-in-form">
+        
+        <form method="post" id="loginForm">
+            {% csrf_token %}
+            {{ form.as_p }} 
+            <h1>Sign in</h1>
+            <input type="email" placeholder="Email" id="email">
+            <div class="input-container"> 
+                <input type="password" placeholder="Password" id="password">
+                <span class="material-symbols-outlined" id="visibility-toggle">visibility_off</span>
+            </div>
+            <p id="statusMessage"></p>
+            <div class="input button">
+                <input type="Submit" value="Login" id="submitButton">
+            </div>      
+        </form>
+        
+  
+        <hr>
+        <p>Don't have an account? <a href="{% url 'signup:getpage' %}"><b>Sign up!</b></a></p>
+    </div>
+</div>
+</section>
+</body>
+
+<style>
+    .error {
+        color: red;
+        font-weight: bold;
+        margin: 5px 0 5px 0;
+    }
+    .success {
+        color: green;
+        font-weight: bold;
+        margin-top: 9px;
+    }
+</style>
+
+<script src="{% static 'signin/js/script.js' %}"></script>
+</html>

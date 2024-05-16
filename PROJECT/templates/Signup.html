@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'signup/css/style.css' %}">
+    <title>Signup</title>
+</head>
+
+    
+
+</script>
+<body>
+<style>
+    #outter {
+        background-image: url( "{% static 'images/signBackground.jpg' %}" );
+    }
+</style>
+
+    <!--Nav-->
+    <section>
+        <nav>
+            <img class="logo" src="{% static 'images/logo.png' %}" alt="" onclick="window.location.href='/'">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'signin:signin' %}">Sign in</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'recipes:recipes' user.name %}">Recipes</a></li>
+                {% else %}
+                <li><a href="{% url 'recipes:recipes' user_name='none' %}">Recipes</a></li>
+                {% endif %}
+                <li><a href="{% url 'cuisines' %}">Cuisines</a></li>
+                <li><a href="{% url 'occasions' %}">Occasions</a></li>
+            </ul> 
+        </nav>
+        
+    <div id="outter"   >
+        <div class="sign-up-form">
+            <h1>Sign Up</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }} 
+                <input type="text" class="input-box" placeholder="Name" name="name" id="name">
+                <input type="text" class="input-box" placeholder="Email" name="email" id="email">
+                <p id="emailMessage"></p>
+                
+                <div class="input-container">
+                    <input type="password" class="input-box" placeholder="Password" name="password" id="password">
+                    <span class="material-symbols-outlined" id="visibility-toggle">visibility_off</span>
+                </div>      
+                
+                <p id="passwordMessage" ></p>
+
+                <input type="password" class="input-box" placeholder="Confirm-password" name="confirmPassword" id="confirmPassword">
+                <p id = 'confirmpMessage'></p>
+                
+                <div class="checkbox">
+                    <input type="checkbox" id="terms" name="terms">
+                    <p id="terms">I accept the Terms of the Use & Privacy Policy.</p>
+                </div>
+                
+
+                <div class="checkbox">
+                    <input type="checkbox" id="admin" name="admin">
+                    <p id="terms">Admin Account.</p>
+                </div>
+                    
+                <p id= "statusMessage"></p>
+
+                <div class="input button">
+                    <input type="Submit" value="Sign Up" id="submitButton" >
+                </div>                        
+                
+                <hr>
+                <p>Already have an account? <a href="{% url 'signin:signin' %}"><b>Sign in!</b></a></p>
+            </form>
+        </div>
+    </div>
+</section>
+    <!--End of nav-->
+
+<style>
+    .error {
+        color: red;
+        font-weight: bold;
+        margin: 5px 0 5px 0;
+    }
+    .success {
+        color: green;
+        font-weight: bold;
+        margin-top: 9px;
+    }
+</style>
+   
+</body>
+
+
+
+<script src="{% static 'signup/js/script.js' %}"></script>
+</html>

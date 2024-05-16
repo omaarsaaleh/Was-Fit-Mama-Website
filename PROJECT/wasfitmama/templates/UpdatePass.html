@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Password</title>
+    <link rel="stylesheet" href="css/UpdatePassStyle.css">
+    
+</head> 
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="../Home_page/Home Page.html"><img src="../Images/logo.png" alt=""> </a> 
+            </div>
+            
+            <img class="profile" src="../Images/default-avatar.png" alt="User Profile" id="ProfilePic">
+              
+            <h4 id="name">USERNAME</h4>
+            <hr>
+            <ul>
+                <li >
+                    <a href="../Home_page/Home Page.html">
+                        <span class="material-symbols-outlined">home</span>
+                        Home
+                    </a>
+                </li>
+                <li><a href="../Profile/Profile.html">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    My Profile
+                </a></li>
+                <li style="display: none;" class="AdminOnly">
+                    <a href="../Dashboard/Dashboard.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li style="display: none;" class="AdminOnly"><a href="../ManageCuisines/Create/Create.html">
+                    <span class="material-symbols-outlined">food_bank</span>
+                    Manage Cuisines
+                </a></li>
+
+
+                <li style="display: none;" class="AdminOnly"><a href="../ManageRecipes/Create/Create.html">
+                    <span class="material-symbols-outlined">soup_kitchen</span>
+                    Manage Recipes
+                </a></li>
+                <li style="display: none;" class="AdminOnly">
+                    <a href="../ManageOccassions/Create/Create.html">
+                        <span class="material-symbols-outlined">diversity_3</span>
+                        Manage Occasions
+                    </a>
+                </li>
+
+                <li>
+                    <button type="submit" value="Log out" id="Logout" onclick="logout()">log out</button>
+                </li>
+
+            </ul>
+        </nav>
+
+        
+        <div class="content">
+            <div class="container1">
+                <div class="header">
+                    <h2>Update Password</h2>
+                </div>
+                <form id="ProfileForm" action="#">
+                    
+
+                    <div class="input">
+                        <p>Enter Your Old Password</p>
+                        <input type="password" placeholder="Old Password" required id="OldPass" >
+                        <span class="material-symbols-outlined" id="visibility-toggle1">visibility_off</span> 
+
+                    </div>
+                    
+                    <div class="input">
+                        <p>Enter Your New Password</p>
+                        <input type="password" placeholder="New Password" required id="NewPass" >
+                        <span class="material-symbols-outlined" id="visibility-toggle2">visibility_off</span> 
+                        <p id="passwordMessage"></p>
+                    </div>
+                    
+                    <div class="input">
+                        <p>Confirm Your New Password</p>
+                        <input type="password" placeholder="Confirm New Password" required id="ConfirmNewPass" >
+                        <p id="ConfirmPasswordMessage"></p>
+
+                    </div>
+
+                    <p id="statusMSG"></p>
+
+                    <div class="input button">
+                        <input type="Submit" value="Update" id="SumbitButton">
+                    </div>
+     
+                </form>                  
+            </div>
+        </div>
+            </div>
+            <script src="main.js"></script>
+            
+    </body>
+
+</html>
+        

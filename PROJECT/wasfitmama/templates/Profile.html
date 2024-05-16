@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head> 
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="../Home_page/Home Page.html"><img src="../Images/logo.png" alt=""> </a> 
+            </div>
+            
+            <img class="profile" src="../Images/default-avatar.png" alt="User Profile" id="ProfilePic">
+              
+            <h4 id="name">USERNAME</h4>
+            <hr>
+            <ul>
+                <li>
+                    <a href="../Home_page/Home Page.html">
+                        <span class="material-symbols-outlined">home</span>
+                        Home
+                    </a>
+                </li>
+
+                <li style="display: none;" class="AdminOnly">
+                    <a href="../Dashboard/Dashboard.html">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li style="display: none;" class="AdminOnly"><a href="../ManageCuisines/Create/Create.html">
+                    <span class="material-symbols-outlined">food_bank</span>
+                    Manage Cuisines
+                </a></li>
+
+
+                <li style="display: none;" class="AdminOnly"><a href="../ManageRecipes/Create/Create.html">
+                    <span class="material-symbols-outlined">soup_kitchen</span>
+                    Manage Recipes
+                </a></li>
+                <li style="display: none;" class="AdminOnly">
+                    <a href="../ManageOccassions/Create/Create.html">
+                        <span class="material-symbols-outlined">diversity_3</span>
+                        Manage Occasions
+                    </a>
+                </li>
+
+                <li>
+                    <button type="submit" value="Log out" id="Logout" onclick="logout()">log out</button>
+                </li>
+
+            </ul>
+        </nav>
+
+        
+        <div class="content">
+            <div class="container1">
+                <div class="header">
+                    <h2>Profile</h2>
+                </div>
+                <form id="ProfileForm" action="#">
+                    <img class="profile" src="../Images/default-avatar.png" alt="User Profile" id="ProfilePic1">
+                    
+                    <div class="ProfileButton">
+                        <div class="b">    
+                            <label for="ChangeProfilePic" class="file-input-label">
+                                Change Profile Picture
+                                <input type="file" id="ChangeProfilePic" accept="image/png, image/jpeg" >
+                            </label> 
+                        </div>
+                    </div>
+
+                    <div class="input">
+                        <p>Name</p>
+                        <input type="text" placeholder="Name" required id="NameField" readonly>
+                        <div class="EditIcon" id="NewNameIcon">
+                            <span class="material-symbols-outlined">edit</span>
+                        </div>
+                    </div>
+
+                    
+                    
+                    <div class="input">
+                        <p>Email</p>
+                        <input type="email" placeholder="Email" required id="EmailField" readonly>
+                        <div class="EditIcon" id="NewEmailIcon">
+                            <span class="material-symbols-outlined">edit</span>
+                        </div>
+                        <p id="statusMSG" style="font-weight: bold; text-align: center; margin-right: 40px;"></p>
+                    </div>
+
+                    
+
+                
+                    <hr>
+                    <div class="links">
+                        <a href="UpdatePass.html" class="button-link">Update Password</a>
+                    </div>
+                </form>                  
+            </div>
+        </div>
+            </div>
+            <script src="main2.js"></script>
+            
+    </body>
+
+</html>
+        

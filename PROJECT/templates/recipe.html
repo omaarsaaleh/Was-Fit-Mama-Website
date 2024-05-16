@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="{% static 'recipe/css/style.css' %}">
+    <script src="https://kit.fontawesome.com/3929e16ef5.js" crossorigin="anonymous"></script>
+    <title>Recipe</title>
+    
+</head>
+<body>
+    <section>
+        <nav>
+            <img class="logo" src="{% static 'images/logo.png' %}" alt="" onclick="window.location.href='/'">
+            <ul id="NAV">
+
+                <li><a href="{% url 'home' %}">Home</a></li>
+                {% if not user.is_authenticated %}
+                <li ><a href="{% url 'signup:getpage' %}">Sign up</a></li>
+                <li><a href="{% url 'signin:signin' %}">Sign in</a></li>
+                {% endif %}
+                {% if user.is_superuser %}
+                <li ><a href="{% url 'dashboard' %}">Admin Dashboard</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li ><a href="{%url 'myprofile:myprofile'%}">Profile</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'recipes:recipes' user.name %}">Recipes</a></li>
+                {% else %}
+                <li><a href="{% url 'recipes:recipes' user_name='none' %}">Recipes</a></li>
+                {% endif %}
+                <li><a href="{% url 'cuisines' %}">Cuisines</a></li>
+                <li><a href="{% url 'occasions' %}">Occasions</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'favourite:fav' user_name=user.name %}">Favorites</a>
+                {% endif %}
+
+                <li><a href="{% url 'about' %}">About</a></li>
+                {% if user.is_authenticated %}
+                    <li style="cursor: pointer;">
+                        <a  id="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                        <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                            {% csrf_token %}
+                        </form>
+                    </li>
+                {% endif %}
+
+
+            </ul> 
+        </nav>
+    </section>
+
+    <div class="grid"> 
+        <div>
+            <h1 class="recipe-name" data-recipe-name="{{ recipe_name }}">{{ recipe_name }}</h1>
+        </div>
+        {% csrf_token %}
+
+        <div class="image-recipe">
+            <img id="recipe-image" src="" alt="">
+        </div>
+
+        <div class="recipe-time" >
+            <h2>Preparation Time</h2>
+            <span>Total: <p class="Total"> min</p></span>
+            <span>Preparation: <p class="Preparation"> min</p></span>
+            <span>Cooking: <p class="Cooking"> min</p></span>
+        </div>
+
+        <div class="recipe-ingrediants">
+            <h2>Ingredients</h2>
+            <ul class="Ingrediants">
+   
+            </ul>
+        </div>
+
+        <div class="recipe-steps">
+            <h2>Steps</h2>
+            <ol class="Steps">
+
+            </ol>
+        </div>
+        
+        <div class="recipe-nutrition">
+            <h2>Nutrition</h2>
+            <span>Protien: <p class="Protiens">...</p></span>
+            <span>Fat:<p class="Fats">...</p></span>
+            <span>Carbs: <p class="Carbs">...</p></span>
+            <span class="c">Calories: <p class="Calories">...</p></span>
+
+        </div>
+    </div>
+
+
+
+    <div class="footer"> 
+        &copy; 2024<span >WasFit Mama </span> All Rights Reserved
+    </div>
+
+
+
+
+<script src="{% static 'recipe/js/script.js' %}"></script>
+
+</body>
+</html>

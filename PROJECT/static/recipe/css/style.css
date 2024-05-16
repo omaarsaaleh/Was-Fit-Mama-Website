@@ -1,0 +1,253 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap'); */
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: sans-serif, Arial, Helvetica;
+} 
+
+body{
+    /* background-color: #EFEFE9; */
+    background-color: white;
+    color: #25330F;
+    display: grid;
+    place-items: center;
+    
+}
+
+
+::selection{
+    background-color: black;
+    color: bisque ;
+}
+
+section {
+    width: 100%;
+    height: 11vh;
+}
+
+section nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    padding-top: 12px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 15px;
+    right: 0;
+    left: 0;
+    background: black;
+    box-shadow: 0 0 10px rgba(0, 0,0, 0.5);
+    z-index: 1;
+}
+span {
+    color: #25330F;
+}
+
+section nav ul {
+    list-style: none;
+}
+
+section nav img {
+    width: 260px;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+section nav ul li {
+    display: inline-block;
+    margin: 0px 15px;
+}
+
+section nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    font-size: 17px;
+}
+section nav ul li a::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: bisque;
+    display: block;
+    transition: 0.2s linear;
+}
+
+section nav ul li a:hover:after {
+    width: 100%;
+}
+section nav ul li a:hover {
+    color: bisque;
+}
+
+
+/* search  */
+
+
+
+.grid{
+    /* background-color: white; */
+    border-radius: 15px;
+    width: 38%;
+}
+
+h1{
+    text-align: center;
+    margin: 50px 0px;
+    font-size: 50px;
+}
+
+h2{
+    font-size: 30px;
+    margin-top: 30px;
+    margin-left: 5px;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+    border-radius: 12px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.recipe-time{
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 5px;
+    border-radius: 10px;
+    background-color: #EFEFE9;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-left: 10px solid #25330F;
+}
+
+.recipe-time h2{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    text-align: center;
+    font-weight: 900;
+    font-size: 35px;
+    margin-bottom: 40px;
+}
+
+.recipe-time span{
+    text-align: center;
+    font-size: 20px;
+}
+.recipe-time span p{
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.recipe-ingrediants{
+    margin-top: 3rem;
+}
+
+.recipe-ingrediants h2, .recipe-steps h2{
+    margin-bottom: 1rem;
+}
+
+.recipe-steps{
+    margin-top: 3rem;
+}
+
+ul{
+    margin-left: 10px;
+}
+
+ul li{
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+ul p{
+    margin-left: 5px;
+    font-weight: 600;
+    font-size: 18;
+}
+
+ol{
+    margin-left: 10px;
+}
+
+ol li{
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+span{
+    margin-left: 5px;
+    font-weight: 700;
+}
+
+ol p{
+    margin-left: 5px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.recipe-nutrition{
+    display: grid;
+    margin: 30px 0;
+    grid-template-columns: auto auto auto;
+    column-gap: 5px;
+    border-radius: 10px;
+    background-color: #EFEFE9;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-left: 10px solid #25330F;
+}
+ 
+.recipe-nutrition h2{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    text-align: center;
+    font-weight: 900;
+    font-size: 35px;
+    margin-bottom: 40px;
+}
+
+.recipe-nutrition span{
+    text-align: center;
+    font-size: 20px;
+}
+
+.recipe-nutrition span p{
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.c {
+   grid-column-start: 1; 
+   grid-column-end: 4; 
+}
+
+.c p{
+    text-align: center;
+}
+
+/* Footer */
+
+.footer{
+    margin-top: 40px;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    padding: 25px;
+    background-color: #000000;
+    width: 100%;
+
+}
+
+.footer span{
+    color: bisque;
+}

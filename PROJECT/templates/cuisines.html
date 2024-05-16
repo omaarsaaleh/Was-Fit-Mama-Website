@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuisines</title>
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'cuisines/css/style.css' %}"> 
+
+</head> 
+<body>
+    <style> 
+        .cuisines-header{
+            background: url("{% static 'cuisines/images/cuisines.jpg' %}" ) center/cover no-repeat;
+        }
+    </style>
+
+    <section>
+        <nav >
+            <img class="logo" src="{% static 'images/logo.png' %}" alt="" onclick="window.location.href='/'">
+            <ul id="NAV">                
+                <li><a href="{% url 'home' %}">Home</a></li>
+                {% if not user.is_authenticated %}
+                <li ><a href="{% url 'signup:getpage' %}">Sign up</a></li>
+                <li><a href="{% url 'signin:signin' %}">Sign in</a></li>
+                {% endif %}
+                {% if user.is_superuser %}
+                <li ><a href="{% url 'dashboard' %}">Admin Dashboard</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li ><a href="{% url 'myprofile:myprofile' %}">Profile</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'recipes:recipes' user.name %}">Recipes</a></li>
+                {% else %}
+                <li><a href="{% url 'recipes:recipes' user_name='none' %}">Recipes</a></li>
+                {% endif %}
+
+                <li><a href="{% url 'occasions' %}">Occasions</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'favourite:fav' user_name=user.name %}">Favorites</a>
+                {% endif %}
+
+                <li><a href="{% url 'about' %}">About</a></li>
+                {% if user.is_authenticated %}
+                <li style="cursor: pointer;">
+                    <a  id="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                </li>
+                {% endif %}
+            </ul> 
+        </nav>
+    </section>
+    
+     
+
+
+    <header>
+
+        <div class="container cuisines-header">
+            <h1>Cuisines</h1>
+        </div>
+    
+    </header>
+
+
+    <div class="occasions">
+        <div class="container">
+            <div class="content">
+                {% for cuisine in all_cuisines %}
+                <div class="occasion">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'recipes:cuisine_recipes' cuisine_name=cuisine.name user_name=user.name %}">
+
+                {% else %}
+                    <a href="{% url 'recipes:cuisine_recipes' cuisine_name=cuisine.name user_name='none' %}">Recipes
+                {% endif %}
+                        <img
+                            src="{{ cuisine.image.url }}"
+                            alt="{{ cuisine.name }}" 
+                        />
+                        <h4>{{ cuisine.name }}</h4>
+                    </a>
+                    <p>{{ cuisine.disc }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer">
+        &copy; 2024 <span > WasFit Mama </span> All Rights Reserved
+    </div>
+    
+
+
+</body>
+</html>
+
+
+
+
+

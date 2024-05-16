@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wasfit Mama</title>
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+</head>
+<body>
+    <section>
+        <nav > 
+            <img class="logo" src="{% static 'images/logo.png' %}" alt="">
+            <ul id ="NAV">
+                {% if not user.is_authenticated %} 
+                <li ><a href="{% url 'signup:getpage' %}">Sign up</a></li>
+                <li><a href="{% url 'signin:signin' %}">Sign in</a></li>
+                {% endif %}
+                {% if user.is_superuser %}
+                <li ><a href="{% url 'dashboard' %}">Admin Dashboard</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li ><a href="{% url 'myprofile:myprofile' %}">Profile</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'recipes:recipes' user.name %}">Recipes</a></li>
+                {% else %}
+                <li><a href="{% url 'recipes:recipes' user_name='none' %}">Recipes</a></li>
+                {% endif %}
+                <li><a href="{% url 'cuisines' %}">Cuisines</a></li>
+                <li><a href="{% url 'occasions' %}">Occasions</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'favourite:fav' user_name=user.name %}">Favorites</a>
+                {% endif %}
+
+                <li><a href="{% url 'about' %}">About</a></li>
+                {% if user.is_authenticated %}
+                <li style="cursor: pointer;">
+                    <a  id="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                </li>
+                {% endif %}
+
+
+            </ul>
+        </nav>
+        <div class="main"> 
+            <div class="main-text">
+                <div class="text1">
+                    <div class="text first-text">Welcome to</div>
+                    <div class="text sec-text">Wasfit Mama</div>
+                </div>
+                <h3>Your Destination for Delicious, Nutritious Recipes!</h3>
+                {% if user.is_authenticated %}
+                    <form action="{% url 'myprofile:myprofile' %}">
+                {% else %}
+                    <form action="{% url 'signup:getpage' %}">
+                {% endif %}
+                <button type="submit" id="start">Let's get started</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+  
+
+
+</body>
+</html>

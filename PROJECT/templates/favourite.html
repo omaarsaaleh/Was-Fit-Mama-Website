@@ -1,0 +1,129 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'recipes/css/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/3929e16ef5.js" crossorigin="anonymous"></script>
+    <title>Recipes</title>
+</head> 
+<body>
+    <section>
+        <nav>
+            <img class="logo" src="{% static 'images/logo.png' %}" alt="" onclick="window.location.href='/'">
+            <ul id="NAV">
+
+                <li><a href="{% url 'home' %}">Home</a></li>
+                {% if not user.is_authenticated %}
+                <li ><a href="{% url 'signup:getpage' %}">Sign up</a></li>
+                <li><a href="{% url 'signin:signin' %}">Sign in</a></li>
+                {% endif %}
+                {% if user.is_superuser %} 
+                <li ><a href="{% url 'dashboard' %}">Admin Dashboard</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li ><a href="{% url 'myprofile:myprofile' %}">Profile</a></li>
+                {% endif %}
+                <li><a href="{% url 'cuisines' %}">Cuisines</a></li>
+                <li><a href="{% url 'occasions' %}">Occasions</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'recipes:recipes' user.name %}">Recipes</a></li>
+                {% endif %}
+
+                <li><a href="{% url 'about' %}">About</a></li>
+                {% if user.is_authenticated %}
+                <li style="cursor: pointer;">
+                    <a  id="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                </li>
+                {% endif %}
+
+
+                <li id="SEARCH">
+                    <div class="search-box">
+                        <input class="search-txt" id="search_item" type="text" name="" placeholder="Recipe Name" onkeyup="Search()">
+                        <a class="search-btn" href="#">
+                          <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </section>
+    
+    <div id="content"> 
+        <h2 style="margin:45px 0 25px 0;">Favourite</h2><br>
+        
+        <div class="all_recipe" id="all_recipe" >
+            {% for recipe in all_recipes %}
+            
+            <div class="card"  recipe_name="{{ recipe.name }}">
+                <div class="front">
+                    <img src="{{ recipe.image.url }}" id="image" alt="{{ recipe.name }}">
+                </div>
+                <div class="back">
+                    <h3>{{ recipe.name }}</h3>
+                    <p>{{ recipe.disc }}</p>
+                    <div class="button_">
+                        <button class="button-85">
+                            <a href="{% url 'recipe:recipe' recipe.name %}">Recipe</a>
+                        </button>
+                    </div>
+                    <div>
+                    
+                        <a  href="{% url 'favourite:follow' user.name recipe.name %}" type="button" id="favbutton_{{ recipe.name }}">
+                            <span class="material-symbols-outlined" style="color: red;" id="favspan_{{ recipe.name }}">favorite</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+           
+                    
+    </div>
+            
+            
+        <br style="background-color: black;">
+
+    
+    
+
+    <script src="{% static 'recipes/js/script.js' %}"></script>
+
+    <script>
+        document.querySelectorAll('[id^="favbutton_"]').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default action of following the link
+        var link = this.href;
+        var span = this.querySelector('span');
+        
+        // Toggle the href attribute
+        if (link.includes('follow')) {
+            this.href = link.replace('follow', 'unfollow');
+        } else {
+            this.href = link.replace('unfollow', 'follow');
+        }
+        
+        // Toggle the color of the span
+        if (span.style.color === 'red') {
+            span.style.color = 'white';
+        } else {
+            span.style.color = 'red';
+        }
+
+        // Manually trigger the link
+        window.location.href = this.href;
+    });
+});
+
+        </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Recipe</title>
+    <link rel="stylesheet" href="{% static 'addrecipe/css/style.css' %}">
+    
+</head> 
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""> </a> 
+            </div>
+            
+            {% if user_profile_pic %}
+                <img class="profile" src="{{ user_profile_pic }}" alt="User Profile" id="ProfilePic">
+            {% else %}
+                <img class="profile" src="{% static 'images/defaultAvatar.png' %}" alt="User Profile" id="ProfilePic">
+            {% endif %} 
+            
+            <h4 id="name">{{name}}</h4>
+            <hr>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}">
+                        <span class="material-symbols-outlined">home</span>
+                        Home
+                    </a>
+                </li>
+
+                <li><a href="{% url 'myprofile:myprofile' %}">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    My Profile
+                </a></li>
+
+                <li>
+                    <a href="{% url 'dashboard' %}">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'recipes:recipes' user.name %}">
+                        <span class="material-symbols-outlined">soup_kitchen</span>
+                        View Recipes
+                    </a>
+                </li>
+
+
+                <li><a href="{% url 'addoccasion'%}">
+                    <span class="material-symbols-outlined">diversity_3</span>
+                    Manage Occasions
+                </a></li>
+                <li><a href="{% url 'addcuisine:addcuisine' %}"> 
+                    <span class="material-symbols-outlined">food_bank</span>
+                    Manage Cuisines
+                </a></li>
+
+                <li>
+                    <button type="submit" value="Log out" id="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">log out</button>
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                </li>
+            </ul>
+        </nav>
+
+        
+        <div class="content">
+            <div class="container1">
+                <div class="header">
+                    <h2>Add a New Recipe</h2>
+                </div>
+                <form id="recipeForm" action="#">
+                    {% csrf_token %}
+                    <div class="input">
+                        <input type="text" placeholder="Enter Recipe name" required id="recipeName">
+                    </div>
+                    <div class="input" style="padding-right:40px ;">
+                        <textarea placeholder="Enter Description" required id="description"></textarea>
+                    </div>
+                    
+                    <div class="input">
+                        <input type="text" placeholder="Enter Cuisine" required id="cuisine">
+                    </div>
+                    
+                    <div class="input">
+                        <input type="text" placeholder="Enter Occasion (Optional)" id="occasion">
+                        <span class="error" id="occasionError" style="color: red;"></span>
+                    </div>
+                    
+                    
+                    <div class="input">
+                        <div id="ingredients-container">
+                            <div class="ingredient">
+                              <label>Ingredient 1</label>
+                              <input type="text" name="step1" placeholder="Enter recipe ingredient">
+                            </div>
+                          </div>
+                          
+                        <div class="buttondiv"> 
+                            <button type="button" id="add-ingredient-button">Add ingredient</button>
+                        </div>    
+                    </div>
+
+                    <div class="input" style="padding-top: 0px;">
+                        <div id="steps-container" >
+                            <div class="step">
+                              <label>Step 1</label>
+                              <input type="text" name="step1" placeholder="Enter recipe step">
+                            </div>
+                          </div>
+                          
+                        <div class="buttondiv"> 
+                            <button type="button" id="add-step-button">Add Step</button>
+                        </div>    
+                    </div>
+
+                    <div class="input" style="padding-top: 10px;">
+                        <input type="number" placeholder="Enter cooking time" id="cookingTime" required min="1" >
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter preparation time" id="preparationTime" required min="1" >
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter protein by grams" id="protein" required min="0" >
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter fats by grams" id="fats" required min="0" >
+                    </div>
+
+                    <div class="input">
+                        <input type="number" placeholder="Enter carbs by grams" id="carbs" required min="0" >
+                    </div>
+
+                    <div class="input">
+                        <label for="recipeImage" class="file-input-label">
+                            Upload Recipe Image
+                            <input type="file" id="recipeImage" accept="image/png, image/jpeg" required>
+                        </label> 
+                        <span id="fileNameDisplay"></span>
+                   
+                    </div>
+
+ 
+                    <div class="input button">
+                        <input type="Submit" value="Add Recipe" id="submitButton" >
+                    </div>
+                    <p id="statusMessage" style="text-align: center; padding-left: 0; margin-left:0 ; font-weight: bold;"></p>
+
+                
+                    <hr>
+                    <div class="text"><span>Or</span></div>
+                    <div class="links">
+                        <a href="{% url 'updaterecipe' %}" class="button-link">Update Recipe</a>
+                        <a href="{% url 'deleterecipe' %}" class="button-link">Delete Recipe</a>
+                    </div>
+                </form>                  
+            </div>
+        </div>
+            </div>
+        
+            <script src="{% static 'addrecipe/js/script.js' %}"></script>
+
+    </body>
+
+</html>
+        

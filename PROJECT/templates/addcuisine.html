@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Cuisine</title>
+    <link rel="stylesheet" href="{% static 'addcuisine/css/style.css' %}">
+    
+</head> 
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""> </a> 
+            </div>
+            
+            {% if user_profile_pic %}
+                <img class="profile" src="{{ user_profile_pic }}" alt="User Profile" id="ProfilePic">
+            {% else %}
+                <img class="profile" src="{% static 'images/defaultAvatar.png' %}" alt="User Profile" id="ProfilePic">
+            {% endif %} 
+            
+            <h4 id="name">{{name}}</h4>
+            <hr>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}">
+                        <span class="material-symbols-outlined">home</span>
+                        Home
+                    </a>
+                </li>
+                
+                <li><a href="{% url 'myprofile:myprofile' %}">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    My Profile
+                </a></li>
+
+                <li>
+                    <a href="{% url 'dashboard' %}">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+ 
+                <li><a href="{% url 'cuisines' %}">
+                    <span class="material-symbols-outlined">food_bank</span>
+                    View Cuisines
+                </a></li> 
+
+
+                <li ><a href="{% url 'addrecipe:addrecipe' %}">
+                    <span class="material-symbols-outlined">soup_kitchen</span>
+                    Manage Recipes
+                </a></li>
+                <li>
+                    <a href="{% url 'addoccasion'%}">
+                        <span class="material-symbols-outlined">diversity_3</span> 
+                        Manage Occasions
+                    </a>
+                </li>
+
+                <li>
+                    <button type="submit" value="Log out" id="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">log out</button>
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                </li>
+
+            </ul>
+        </nav>
+
+        
+        <div class="content">
+            <div class="container1">
+                <div class="header">
+                    <h2>Add a New Cuisine</h2>
+                </div>
+                <form id="CuisineForm" action="#">
+                    <div class="input">
+                        <input type="text" placeholder="Enter Cuisine name" required id="CuisineName">
+                    </div>
+                    <div class="input" style="padding-right:40px ;">
+                        <textarea placeholder="Enter Description" required id="description"></textarea>
+                    </div>
+                    
+
+                    <div class="input">
+                        <label for="CuisineImage" class="file-input-label">
+                            Upload Cuisine Image
+                            <input type="file" id="CuisineImage" accept="image/png, image/jpeg" >
+                        </label> 
+                        <span id="fileNameDisplay"></span>
+                   
+                    </div>
+
+                    <div class="input button">
+                        <input type="Submit" value="Add Cuisines" id="submitButton" >
+                    </div>
+                    <p id="statusMessage" style="text-align: center; padding-left: 0; margin-left:0 ; font-weight: bold;"></p>
+
+                
+                    <hr>
+                    <div class="text"><span>Or</span></div>
+                    <div class="links">
+                        <a href="{% url 'updatecuisine' %}" class="button-link">Update Cuisine</a>
+                        <a href="{% url 'deletecuisine'%}" class="button-link">Delete Cuisine</a> 
+                    </div>
+                </form>                  
+            </div>
+        </div>
+            </div>
+        <script src="{% static 'addcuisine/js/script.js' %}"></script>
+            
+    </body>
+
+</html>
+        

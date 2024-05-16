@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <link rel="stylesheet" href="{% static 'about/css/style.css' %}">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/3929e16ef5.js" crossorigin="anonymous"></script>
+
+</head>
+<body> 
+    <section> 
+        <nav> 
+            <img class="logo" src="{% static 'images/logo.png' %}" alt="" onclick="window.location.href='/'">
+            <ul id ="NAV">
+
+                <li><a href="{% url 'home' %}">Home</a></li>
+                {% if not user.is_authenticated %}
+                <li ><a href="{% url 'signup:getpage' %}">Sign up</a></li>
+                <li><a href="{% url 'signin:signin' %}">Sign in</a></li>
+                {% endif %}
+                {% if user.is_superuser %}
+                <li ><a href="{% url 'dashboard' %}">Admin Dashboard</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li ><a href="{%url 'myprofile:myprofile'%}">Profile</a></li> 
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'recipes:recipes' user.name %}">Recipes</a></li>
+                {% else %}
+                <li><a href="{% url 'recipes:recipes' user_name='none' %}">Recipes</a></li>
+                {% endif %}
+                <li><a href="{% url 'cuisines' %}">Cuisines</a></li>
+                <li><a href="{% url 'occasions' %}">Occasions</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'favourite:fav' user_name=user.name %}">Favorites</a>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                    <li style="cursor: pointer;">
+                        <a  id="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                        <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                            {% csrf_token %}
+                        </form>
+                    </li>
+                {% endif %}
+            </ul> 
+        </nav>
+    </section>
+
+    <div class="container">
+        <h1>About us</h1>
+        <div class="section-with-image">
+            <img src="{% static 'about/images/plate.jpg' %}" alt="Who We Are Image" class="section-image">
+            <div class="section-text">
+                <h2>Who are we?</h2>
+                <p>
+                    Wasfit Mama is a platform dedicated to exploring the rich culinary traditions of Eastern and African cuisine. Our team comprises passionate Food, Culture, and International Studies (FCAI) students committed to curating an enticing blend of flavors and techniques on our blog.
+                </p>
+            </div>
+        </div>
+        
+        <div class="section-with-image">
+            <div class="section-text">
+                <h2>Our inspiration</h2>
+                <p>
+                    Wasfit Mama draws its inspiration from the kitchens of Eastern and African homes, where homemade cooking is an art passed down from mothers through generations. In these vibrant culinary spaces, simple ingredients are transformed into flavorful dishes infused with love and cultural heritage. Our mission is to honor and celebrate the rich tapestry of flavors and techniques found in these kitchens, preserving the essence of homemade cooking that unites families and communities. At Wasfit Mama, we aim to share the warmth and magic of home-cooked meals, inviting others to experience the joy and connection they bring.
+                </p>
+            </div>
+            <img src="{% static 'about/images/anh-nguyen-kcA-c3f_3FE-unsplash.jpg' %}" alt="Inspiration Image" class="section-image">
+        </div>
+        <div class="section-with-image">
+            <img src="{% static 'about/images/jaqueline-pelzer-Zt-0gWKodXk-unsplash.jpg' %}" alt="Our Aim Image" class="section-image">
+            <div class="section-text">
+                <h2>Our aim</h2>
+                <p>
+                    Discover a world where culinary creativity meets cultural fusion. We are dedicated to enriching the culinary landscape by offering a diverse array of recipes tailored to individual preferences, ingredient availability, and user feedback. Join us on a journey of discovery as we explore the vibrant tapestry of flavors and traditions from around the world.
+                </p>
+            </div>
+        </div>
+        <h1>Join the Wasfit Mama Community</h1>
+        <div class="section-with-image">
+            <div class="section-text">
+                <h2>Unlock Exclusive Benefits:</h2>
+                <p>
+                    Are you ready to become our next Star Chef? Gain access to behind-the-scenes insights, early peeks at exciting launches, featured recipes, promotions, and products.
+                </p>
+            </div>
+            <img src="{% static 'about/images/joyful-vT5xrj3z1OE-unsplash.jpg' %}" alt="Unlock Exclusive Benefits Image" class="section-image">
+        </div>
+        <div class="section-with-image">
+            
+            <img src="{% static 'about/images/davide-cantelli-jpkfc5_d-DI-unsplash.jpg' %}" alt="Shape the Future Image" class="section-image">
+            <div class="section-text">
+                <h2>Shape the Future:</h2>
+                <p>
+                    Your feedback is invaluable. We're built for and by home cooks, and we value your input. As a Star Chef, you'll have numerous opportunities to influence the direction of our brand and programs.
+                </p>
+            </div>
+        </div>
+        <div class="section-with-image">
+            <div class="section-text">
+                <h2>Connect and Grow:</h2>
+                <p>
+                    Join a vibrant network of culinary enthusiasts nationwide. Share cooking tips, explore food media opportunities, and attend exclusive events and social meetups throughout the year.
+                </p>
+            </div>
+            <img src="{% static 'about/images/pixzolo-photography-aeESmmFKH0M-unsplash.jpg' %}" alt="Connect and Grow Image" class="section-image">
+            
+        </div>
+        <div class="section-with-image">
+            <img src="{% static 'about/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg' %}" alt="Boost Your Brand Image" class="section-image">
+            <div class="section-text">
+                <h2>Boost Your Brand:</h2>
+                <p>
+                    Become a brand influencer and showcase your culinary skills to our audience. As a Star Chef, you'll be prominently featured in website promotions, marketing campaigns, and our upcoming projects, reaching millions of food enthusiasts.
+                </p>
+            </div>
+        </div>
+        <h1>Leadership Team</h1>
+        <div class="Leadership">   
+            <div class="team-member">
+                <h4>Ahmed Yosry</h4>
+                <p>Co-Founder & COO</p>
+                <img src="{% static 'images/defaultAvatar.png' %}" alt="Ahmed Yosry">
+            </div>
+            <div class="team-member">
+                <h4>Mohamed Taha</h4>
+                <p>Co-Founder & CEO</p>
+                <img src="{% static 'images/defaultAvatar.png' %}" alt="Mohamed Taha">
+            </div>
+            <div class="team-member">   
+                <h4>Abdulrahman Mohamed</h4>
+                <p>Co-Founder & COO</p>
+                <img src="{% static 'images/defaultAvatar.png' %}" alt="Abdulrahman Mohamed">
+            </div>
+            <div class="team-member">
+                <h4>Mostafa Anwar</h4>
+                <p>Co-Founder & COO</p>
+                <img src="{% static 'images/defaultAvatar.png' %}" alt="Mostafa Anwar">
+            </div>
+            <div class="team-member">
+                <h4>Yousef Waleed</h4>
+                <p>Co-Founder & COO</p>
+                <img src="{% static 'images/defaultAvatar.png' %}" alt="Yousef Waleed">
+            </div>
+            <div class="team-member">
+                <h4>Omar Saleh</h4>
+                <p>Co-Founder & COO</p>
+                <img src="{% static 'images/defaultAvatar.png' %}" alt="Omar Saleh">
+            </div>
+        </div>
+        <div class="Contact">
+        <h1>Contact us</h1>
+            <ul>
+                <li>Email: <a href="mailto:Wasfitmama@gmail.com">Wasfitmama@gmail.com</a></li>
+                <li>Call: <a href="tel:+201553217570">+201553217570</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <div class="footer">
+        &copy; 2024<span > WasFit Mama </span> All Rights Reserved
+    </div>
+
+
+ 
+
+
+</body>
+</html>
