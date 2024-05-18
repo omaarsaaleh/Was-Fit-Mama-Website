@@ -22,8 +22,16 @@ Wasfit Mama is a **Django-based recipe finder website** where users can explore 
 
 ## 📷 Screenshots
 
-![image](media/home.png)
-![image](media/cuisines.png)
+Here are some screenshots of the Wasfit Mama website:
+
+### Home Page
+![Home Page](media/home.png)
+
+### Cuisines Page
+![Cuisines Page](media/cuisines.png)
+
+### Admin Dashboard
+![Admin Dashboard](media/dashboard.png)
 
 ---
 
